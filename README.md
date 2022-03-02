@@ -5,14 +5,18 @@ Used for hide view from system screenshots and video recording, iOS 11 required.
 ##### What working:
 
 - Autolayout
+- Position inside content with autolayout
 - Hide content inside protected view
+- Dinamicaly enable/disable hiding
 - Provide gestures
+
 
 ##### In progress:
 
-- Dinamicaly enable/disable hiding from system screenshots and videorecordings(disabling not working yet)
+- ~~Dinamicaly enable/disable hiding from system screenshots and videorecordings(disabling not working yet)~~ Done
 - Run from `init(coder:)`
-- position inside content with autolayout(now frame based only)
+- ~~position inside content with autolayout(now frame based only)~~ Done
+- Improve API
 
 <details><summary>Example code:</summary>
 <p>
