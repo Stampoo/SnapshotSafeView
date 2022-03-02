@@ -18,75 +18,24 @@ Used for hide view from system screenshots and video recording, iOS 11 required.
 <p>
  
 ```swift
-import UIKit
-import SnapshotSafeView
-import WrappingAnchor
-
 final class ExampleSecureViewController: UIViewController {
     
-    let simpleLable = UILabel()
-    
-    let securedBlueView = FromScreenshotProtectedView()
-    lazy var secureBlueViewController = SnapshotSafeContentController(content: securedBlueView)
-    
-    let securedRedButton = FromScreenshotProtectedButton(type: .system)
-    lazy var secureRedButtonController = SnapshotSafeContentController(content: securedRedButton)
-    
-    let nonSecuredGreenView = UIView()
-    
+    let hiddenFromScreenshotButtonController = ScreenshotProtectController(content: UIButton())
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(secureBlueViewController.commonContainer)
-        securedBlueView.backgroundColor = .blue
+        hiddenFromScreenshotButtonController.content.backgroundColor = .red // UI customization apply to content
+        hiddenFromScreenshotButtonController.content.layer.cornerRadius = 16
         
-        view.addSubview(secureRedButtonController.commonContainer)
-        securedRedButton.backgroundColor = .red
-        
-        view.addSubview(nonSecuredGreenView)
-        nonSecuredGreenView.backgroundColor = .green
-        
-        secureBlueViewController.setupAsHiddenFromSnapshots()
-        secureRedButtonController.setupAsHiddenFromSnapshots()
-        
-        layoutBlueView()
-        layoutRedButton()
-        layoutGreenView()
-    }
-    
-}
-
-// MARK: - Layout
-
-private extension ExampleSecureViewController {
-    
-    func layoutBlueView() {
-        secureBlueViewController.commonContainer
-            // Simple wrapper on NSLayoutAnchor API
+        view.addSubview(hiddenFromScreenshotButtonController.container)
+        hiddenFromScreenshotButtonController.container // Layout control apply to container
             .position
-            .top(to: view, const: 30)
-            .left(to: view, const: 30)
-            .right(to: view, const: 30)
-            .height(const: 200)
+            .pin(to: view.safeAreaLayoutGuide, const: 65)
+        
+        hiddenFromScreenshotButtonController.setupContentAsHiddenInScreenshotMode() // apply hidden mode
+        // content will be removed from system screenshots and screen recording
     }
     
-    func layoutRedButton() {
-        secureRedButtonController.commonContainer
-            .position
-            .top(to: securedBlueView, const: 30, dir: .bottom)
-            .left(to: view, const: 30)
-            .width(const: 115)
-            .height(const: 115)
-    }
-    
-    func layoutGreenView() {
-        nonSecuredGreenView
-            .position
-            .top(to: securedBlueView, const: 30, dir: .bottom)
-            .left(to: securedRedButton, const: 30, dir: .right)
-            .right(to: view, const: 30)
-            .height(to: securedRedButton)
-    }
-
 }
 ```
 
@@ -95,8 +44,10 @@ private extension ExampleSecureViewController {
 
 <details><summary>Example in work:</summary>
 <p>
- 
-https://user-images.githubusercontent.com/44356536/156046148-59c7837d-c73d-4dec-b9d2-5c062b981b64.mov
+
+
+https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov
+
 
 </p>
 </details>
