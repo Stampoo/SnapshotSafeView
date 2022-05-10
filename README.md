@@ -1,8 +1,14 @@
 # SnapshotSafeView
 
-Used for hide view from system screenshots and video recording, iOS 11 required.
+Used for hide view from system screenshots and video recording.
 
-##### What working:
+## Requirements
+
+- Xcode version: `12.5.1` or higher
+- Deployment target `iOS v11` or higher
+- Swift toolchain `5.5`
+
+### What working:
 
 - Autolayout
 - Position inside content with autolayout
@@ -11,16 +17,14 @@ Used for hide view from system screenshots and video recording, iOS 11 required.
 - Provide gestures
 
 
-##### In progress:
+### In progress:
 
 - ~~Dinamicaly enable/disable hiding from system screenshots and videorecordings(disabling not working yet)~~ Done
 - Run from `init(coder:)`
 - ~~position inside content with autolayout(now frame based only)~~ Done
 - Improve API
 
-<details><summary>Example code:</summary>
-<p>
- 
+## How usage:
 ```swift
 final class ExampleSecureViewController: UIViewController {
     
@@ -43,16 +47,8 @@ final class ExampleSecureViewController: UIViewController {
 }
 ```
 
-</p>
-</details>
-
-<details><summary>Example in work:</summary>
-<p>
+## Example:
 
 
-https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov
-
-
-</p>
-</details>
+<img src="https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov" width="29%" height="29%"/>
 
