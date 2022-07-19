@@ -8,9 +8,13 @@
 import UIKit
 
 final class ScreenshotInvincibleContainer: UITextField {
+
+    // MARK: - Private Properties
     
     /// - View, which will be hidden on screenshots and screen recording
     private(set) var content: UIView
+
+    // MARK: - Initialization
     
     public init(content: UIView) {
         self.content = content
@@ -23,11 +27,8 @@ final class ScreenshotInvincibleContainer: UITextField {
         super.init(coder: coder)
         setupInitialState()
     }
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        updateLayoutOfContentAfterChangeLayoutInContainer()
-    }
+
+    // MARK: - UIView
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard !isHidden,
@@ -45,10 +46,16 @@ final class ScreenshotInvincibleContainer: UITextField {
         subviews.forEach(appendContent(to:))
         backgroundColor = .clear
         isUserInteractionEnabled = false
+        activateLayoutConstraintsOfContent()
     }
     
-    private func updateLayoutOfContentAfterChangeLayoutInContainer() {
-        content.frame = self.bounds
+    private func activateLayoutConstraintsOfContent() {
+        [
+            content.topAnchor.constraint(equalTo: topAnchor),
+            content.bottomAnchor.constraint(equalTo: bottomAnchor),
+            content.leftAnchor.constraint(equalTo: leftAnchor),
+            content.rightAnchor.constraint(equalTo: rightAnchor)
+        ].forEach { $0.isActive = true }
     }
     
     private func appendContent(to view: UIView?) {
@@ -68,6 +75,7 @@ extension ScreenshotInvincibleContainer: ScreenshotInvincibleContainerProtocol {
         content.removeFromSuperview()
         content = newContent
         subviews.forEach(appendContent(to:))
+        activateLayoutConstraintsOfContent()
     }
     
     public func setupContanerAsHideContentInScreenshots() {
