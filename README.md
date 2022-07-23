@@ -5,7 +5,7 @@ Used for hide view from system screenshots and video recording.
 ## Requirements
 
 - Xcode version: `12.5.1` or higher
-- Deployment target `iOS v11` or higher
+- Deployment target `iOS v12` or higher
 - Swift toolchain `5.5`
 
 ### What working:
