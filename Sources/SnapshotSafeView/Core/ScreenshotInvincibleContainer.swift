@@ -10,7 +10,14 @@ import UIKit
 final class ScreenshotInvincibleContainer: UITextField {
 
     // MARK: - Private Properties
-    
+
+    private let hiddenContainerRecognizer = HiddenContainerRecognizer()
+    private var container: UIView? {
+        try? hiddenContainerRecognizer.getHiddenContainer(from: self)
+    }
+
+    // MARK: - Internal Properties
+
     /// - View, which will be hidden on screenshots and screen recording
     private(set) var content: UIView
 
@@ -43,26 +50,28 @@ final class ScreenshotInvincibleContainer: UITextField {
     // MARK: - Private methods
     
     private func setupInitialState() {
-        subviews.forEach(appendContent(to:))
+        appendContent(to: container)
+
         backgroundColor = .clear
         isUserInteractionEnabled = false
-        activateLayoutConstraintsOfContent()
     }
     
-    private func activateLayoutConstraintsOfContent() {
+    private func activateLayoutConstraintsOfContent(to view: UIView) {
         [
-            content.topAnchor.constraint(equalTo: topAnchor),
-            content.bottomAnchor.constraint(equalTo: bottomAnchor),
-            content.leftAnchor.constraint(equalTo: leftAnchor),
-            content.rightAnchor.constraint(equalTo: rightAnchor)
+            content.topAnchor.constraint(equalTo: view.topAnchor),
+            content.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            content.leftAnchor.constraint(equalTo: view.leftAnchor),
+            content.rightAnchor.constraint(equalTo: view.rightAnchor)
         ].forEach { $0.isActive = true }
     }
     
     private func appendContent(to view: UIView?) {
-        guard let view = view, type(of: view.self).description() == "_UITextLayoutCanvasView" else {
+        guard let view = view else {
             return
         }
         view.addSubview(content)
+        content.translatesAutoresizingMaskIntoConstraints = false
+        activateLayoutConstraintsOfContent(to: view)
     }
     
 }
@@ -74,8 +83,7 @@ extension ScreenshotInvincibleContainer: ScreenshotInvincibleContainerProtocol {
     public func eraseOldAndAddnewContent(_ newContent: UIView) {
         content.removeFromSuperview()
         content = newContent
-        subviews.forEach(appendContent(to:))
-        activateLayoutConstraintsOfContent()
+        appendContent(to: container)
     }
     
     public func setupContanerAsHideContentInScreenshots() {
