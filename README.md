@@ -26,24 +26,29 @@ Used for hide view from system screenshots and video recording.
 
 ## How usage:
 ```swift
-final class ExampleSecureViewController: UIViewController {
-    
-    let hiddenFromScreenshotButtonController = ScreenshotProtectController(content: UIButton())
+final class ExampleViewController: UIViewController {
+
+    var hiddenFromScreenshotButtonController = ScreenshotProtectController(content: UIButton())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hiddenFromScreenshotButtonController.content.backgroundColor = .red // UI customization apply to content
-        hiddenFromScreenshotButtonController.content.layer.cornerRadius = 16
-        
+        hiddenFromScreenshotButtonController.content.backgroundColor = .systemRed // UI customization apply to content
+        hiddenFromScreenshotButtonController.content.layer.cornerRadius = 20
+
         view.addSubview(hiddenFromScreenshotButtonController.container)
-        hiddenFromScreenshotButtonController.container // Layout control apply to container
-            .position
-            .pin(to: view.safeAreaLayoutGuide, const: 65)
-        
+        hiddenFromScreenshotButtonController.container.translatesAutoresizingMaskIntoConstraints = false
+
+        [
+            hiddenFromScreenshotButtonController.container.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
+            hiddenFromScreenshotButtonController.container.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 65),
+            hiddenFromScreenshotButtonController.container.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -65),
+            hiddenFromScreenshotButtonController.container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -65)
+        ].forEach { $0.isActive = true } // Layout control apply to container
+
         hiddenFromScreenshotButtonController.setupContentAsHiddenInScreenshotMode() // apply hidden mode
         // content will be removed from system screenshots and screen recording
     }
-    
+
 }
 ```
 
