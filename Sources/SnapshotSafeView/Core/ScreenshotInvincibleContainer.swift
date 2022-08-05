@@ -38,13 +38,7 @@ final class ScreenshotInvincibleContainer: UITextField {
     // MARK: - UIView
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        guard !isHidden,
-              alpha > 0.01,
-              frame.contains(point),
-              isUserInteractionEnabled else {
-            return content.hitTest(point, with: event)
-        }
-        return self
+        return container?.hitTest(point, with: event)
     }
     
     // MARK: - Private methods
@@ -70,6 +64,7 @@ final class ScreenshotInvincibleContainer: UITextField {
             return
         }
         view.addSubview(content)
+        view.isUserInteractionEnabled = true
         content.translatesAutoresizingMaskIntoConstraints = false
         activateLayoutConstraintsOfContent(to: view)
     }
