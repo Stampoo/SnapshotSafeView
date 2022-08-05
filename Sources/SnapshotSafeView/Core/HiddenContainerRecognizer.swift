@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// Recognize view, which can be hidden before system screenshot event did triggered, depend on `iOS vesrion`
+/// Recognize view, which can be hidden before system screenshot event did triggered, depend on `iOS version`
 struct HiddenContainerRecognizer {
 
     // MARK: - Nested Types

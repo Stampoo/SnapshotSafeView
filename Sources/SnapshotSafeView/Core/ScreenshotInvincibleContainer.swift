@@ -42,8 +42,8 @@ final class ScreenshotInvincibleContainer: UITextField {
               alpha > 0.01,
               frame.contains(point),
               isUserInteractionEnabled else {
-                  return super.hitTest(point, with: event)
-              }
+            return content.hitTest(point, with: event)
+        }
         return self
     }
     
