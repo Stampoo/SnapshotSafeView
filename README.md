@@ -69,8 +69,7 @@ struct ContentView_Previews: PreviewProvider {
 
 ### Example:
 
-
-<img src="https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov" width="29%" height="29%"/>
+<img src="https://user-images.githubusercontent.com/44356536/189480958-191b7fa3-e6b2-4ac8-b222-00a38e21311c.mov" width="29%"/>
 
 
 ### `UIKit`
@@ -102,6 +101,5 @@ final class ExampleViewController: UIViewController {
 ```
 
 ### Example:
-
 
 <img src="https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov" width="29%" height="29%"/>
