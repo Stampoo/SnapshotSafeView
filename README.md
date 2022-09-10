@@ -15,6 +15,7 @@ Used for hide view from system screenshots and video recording.
 - Hide content inside protected view
 - Dinamicaly enable/disable hiding
 - Provide gestures
+- SwiftUI
 
 
 ### In progress:
@@ -22,9 +23,57 @@ Used for hide view from system screenshots and video recording.
 - ~~Dinamicaly enable/disable hiding from system screenshots and videorecordings(disabling not working yet)~~ Done
 - Run from `init(coder:)`
 - ~~position inside content with autolayout(now frame based only)~~ Done
+- ~~Support SwiftUI~~
 - Improve API
 
 ## How usage:
+### `SwiftUI`
+```swift
+import SwiftUI
+import SnapshotSafeView
+
+struct ContentView: View {
+
+    @State var isNeedHiddenContentFromScreenshots: Bool = false
+
+    var body: some View {
+        Text("Hello, world!")
+            .padding()
+            .background(Color.brown)
+        Text("Hello, world!")
+            .padding()
+            .background(Color.blue)
+            .hiddenFromSystemSnaphotWithDefaultPadding(when: isNeedHiddenContentFromScreenshots)
+        Text("Hello, world!")
+            .padding()
+            .background(Color.orange)
+        Button("Toggle hide from screenshots condition") {
+            isNeedHiddenContentFromScreenshots.toggle()
+        }
+
+        Spacer()
+
+        Text(isNeedHiddenContentFromScreenshots ? "Will be hidden from snapshots" : "Will be appear in snapshots")
+            .padding()
+            .background(isNeedHiddenContentFromScreenshots ? Color.green : Color.red)
+
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+```
+
+### Example:
+
+
+<img src="https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov" width="29%" height="29%"/>
+
+
+### `UIKit`
 ```swift
 final class ExampleViewController: UIViewController {
 
@@ -52,8 +101,7 @@ final class ExampleViewController: UIViewController {
 }
 ```
 
-## Example:
+### Example:
 
 
 <img src="https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov" width="29%" height="29%"/>
-
