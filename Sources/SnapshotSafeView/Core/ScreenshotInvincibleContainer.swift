@@ -40,6 +40,11 @@ final class ScreenshotInvincibleContainer: UITextField {
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         return container?.hitTest(point, with: event)
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        isUserInteractionEnabled = content.isUserInteractionEnabled
+    }
     
     // MARK: - Private methods
     
@@ -47,6 +52,7 @@ final class ScreenshotInvincibleContainer: UITextField {
         appendContent(to: container)
 
         backgroundColor = .clear
+        isUserInteractionEnabled = content.isUserInteractionEnabled
     }
     
     private func activateLayoutConstraintsOfContent(to view: UIView) {
