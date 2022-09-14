@@ -47,7 +47,6 @@ final class ScreenshotInvincibleContainer: UITextField {
         appendContent(to: container)
 
         backgroundColor = .clear
-        isUserInteractionEnabled = false
     }
     
     private func activateLayoutConstraintsOfContent(to view: UIView) {
