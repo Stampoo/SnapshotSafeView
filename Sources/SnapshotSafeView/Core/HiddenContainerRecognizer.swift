@@ -50,6 +50,10 @@ struct HiddenContainerRecognizer {
             return "_UITextFieldContentView"
         }
 
+        if #available(iOS 11, *) {
+            return "_UITextFieldContentView"
+        }
+
         let currentIOSVersion = (UIDevice.current.systemVersion as NSString).floatValue
         throw Error.unsupportedIosVersion(version: currentIOSVersion)
     }

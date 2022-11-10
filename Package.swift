@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SnapshotSafeView",
     platforms: [
-        .iOS(.v12)
+        .iOS(.v11)
     ],
     products: [
         .library(name: "SnapshotSafeView", targets: ["SnapshotSafeView"])
