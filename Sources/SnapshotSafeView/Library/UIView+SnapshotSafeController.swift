@@ -24,7 +24,10 @@ public extension UIView {
      ```
      */
     func setupAsHiddenFromSystemScreenshotsAndVideoRecordings() {
-        guard let superview = self.superview else {
+        guard
+            let superview = self.superview,
+            !HiddenContainerRecognizer().viewIsAlreadyInHiddenContainer(self)
+        else {
             return
         }
 

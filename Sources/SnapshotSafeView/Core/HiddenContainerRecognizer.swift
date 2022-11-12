@@ -54,4 +54,18 @@ struct HiddenContainerRecognizer {
         throw Error.unsupportedIosVersion(version: currentIOSVersion)
     }
 
+    func viewIsAlreadyInHiddenContainer(_ view: UIView) -> Bool {
+        guard
+            let containerClassName = try? getHiddenContainerTypeInStringRepresentation(),
+            let superViewInspectableView = view.superview
+        else {
+            return false
+        }
+
+        let typeOfClassContainer = type(of: superViewInspectableView)
+        let stringRepresentationOfClassContainer = String(describing: typeOfClassContainer.self)
+
+        return stringRepresentationOfClassContainer == containerClassName
+    }
+
 }

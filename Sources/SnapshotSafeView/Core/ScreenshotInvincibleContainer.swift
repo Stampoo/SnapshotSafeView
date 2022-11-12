@@ -36,6 +36,14 @@ final class ScreenshotInvincibleContainer: UITextField {
     }
 
     // MARK: - UIView
+
+    override var canBecomeFocused: Bool {
+        false
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        false
+    }
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         return container?.hitTest(point, with: event)
