@@ -105,5 +105,5 @@ final class ExampleViewController: UIViewController {
 ### Example:
 
 <p>
-<img src="https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov" width="29%" height=200/>
+<img src="https://user-images.githubusercontent.com/44356536/156410609-bf9e2373-0fe9-4ace-ae58-73c2175d7b27.mov" width=200/>
 </p>
