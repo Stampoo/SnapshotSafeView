@@ -2,29 +2,46 @@
 
 Used for hide view from system screenshots and video recording.
 
+## Categories
+
+1. [How install](#how-install)
+2. [Requirements](#requirements)
+3. [Progress](#progress)
+4. [How usage](#how-usage)
+
+    4.1. [SwiftUI](#swiftui)
+
+    4.2. [UIKit](#uikit)
+
+-----------------------
+
+## How install
+
+- [React-Native](Documentation/React-Native.md)
+- [~~Flutter~~]() in progress
+- [Swift](Documentation/Swift.md)
+
+-----------------------
+
 ## Requirements
 
 - Xcode version: `12.5.1` or higher
 - Deployment target `iOS v12` or higher
 - Swift toolchain `5.5`
 
-### What working:
+-----------------------
 
-- Autolayout
-- Position inside content with autolayout
-- Hide content inside protected view
-- Dinamicaly enable/disable hiding
-- Provide gestures
-- SwiftUI
-
-
-### In progress:
+## Progress:
 
 - ~~Dinamicaly enable/disable hiding from system screenshots and videorecordings(disabling not working yet)~~ Done
 - Run from `init(coder:)`
 - ~~position inside content with autolayout(now frame based only)~~ Done
 - ~~Support SwiftUI~~
 - Improve API
+- ~~Support `React-Native`~~ Done
+- Support `Flutter`
+
+-----------------------
 
 ## How usage:
 ### `SwiftUI`
@@ -75,6 +92,18 @@ struct ContentView_Previews: PreviewProvider {
 
 
 ### `UIKit`
+
+>**Warning**: This is experimental API, be careful
+ ```swift
+let someView = UIView()
+
+someView.translatesAutoresizingMaskIntoConstraints = false
+someView.topAnchor.constraint(superView.topAnchor, constant: 12).isActive = true
+someView.setupAsHiddenFromScreenshot()
+ ```
+
+or:
+
 ```swift
 final class ExampleViewController: UIViewController {
 
