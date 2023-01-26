@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "snapshotsafeview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Stampoo/SnapshotSafeView",
+      "state" : {
+        "revision" : "0223156f48d1fb9247a7c251530ca46e47dcc4d3",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
