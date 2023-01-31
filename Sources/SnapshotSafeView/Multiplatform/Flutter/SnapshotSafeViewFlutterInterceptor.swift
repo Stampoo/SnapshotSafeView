@@ -48,7 +48,7 @@ public final class SnapshotSafeViewFlutterInterceptor {
 
     // MARK: - Public Methods
 
-    func performSwitchView(in window: UIWindow) {
+    public func performSwitchView(in window: UIWindow) {
         rootControllerInterceptor.performSwitchView(
             in: window,
             expectedContainer: multiplatformSnapshotSafeView,
