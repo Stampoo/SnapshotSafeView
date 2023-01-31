@@ -18,7 +18,7 @@ Used for hide view from system screenshots and video recording.
 ## How install
 
 - [React-Native](Documentation/React-Native.md)
-- [~~Flutter~~]() in progress
+- [Flutter](Documentation/Flutter.md)(experimental)
 - [Swift](Documentation/Swift.md)
 
 -----------------------
