@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = "SnapshotSafeView"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
   s.summary = "Used for hide view from system screenshots and video recording."
   s.description  = "Used for hide view from system screenshots and video recording."
 
