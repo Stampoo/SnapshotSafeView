@@ -49,7 +49,7 @@ private extension RootControllerInterceptor {
     ) {
         stopWaitingRootInWindow()
 
-        timerWhichListenWindowsRoot = DispatchSource.makeTimerSource()
+        timerWhichListenWindowsRoot = DispatchSource.makeTimerSource(queue: .main)
         timerWhichListenWindowsRoot?.setEventHandler { [weak self] in
             guard
                 self?.isNeedPerformSwitching(window.rootViewController, expected: rootExpectation) == .some(true),
