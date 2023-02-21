@@ -11,13 +11,13 @@ open class MultiplatformBridgeView: UIView {
 
     // MARK: - Private Properties
 
-    private let screenshotSafeContainer: ScreenshotInvincibleContainer
+    private let screenshotSafeContainer: MultiplatformContainer
     private var setupInitialStateIsPerformed: Bool = false
 
     // MARK: - Initialization
 
     public init() {
-        self.screenshotSafeContainer = ScreenshotInvincibleContainer(content: UIView())
+        self.screenshotSafeContainer = MultiplatformContainer(content: ViewWithDisabledPointInsideCheck())
         super.init(frame: .zero)
 
         configureScreenshotSafeContainer()
