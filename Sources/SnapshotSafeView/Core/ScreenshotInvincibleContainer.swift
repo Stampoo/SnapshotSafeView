@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ScreenshotInvincibleContainer: UITextField {
+class ScreenshotInvincibleContainer: UITextField {
 
     // MARK: - Private Properties
 
@@ -45,7 +45,7 @@ final class ScreenshotInvincibleContainer: UITextField {
         false
     }
     
-    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         return container?.hitTest(point, with: event)
     }
 
@@ -88,17 +88,17 @@ final class ScreenshotInvincibleContainer: UITextField {
 
 extension ScreenshotInvincibleContainer: ScreenshotInvincibleContainerProtocol {
     
-    public func eraseOldAndAddnewContent(_ newContent: UIView) {
+    func eraseOldAndAddnewContent(_ newContent: UIView) {
         content.removeFromSuperview()
         content = newContent
         appendContent(to: container)
     }
     
-    public func setupContanerAsHideContentInScreenshots() {
+    func setupContanerAsHideContentInScreenshots() {
         isSecureTextEntry = true
     }
     
-    public func setupContanerAsDisplayContentInScreenshots() {
+    func setupContanerAsDisplayContentInScreenshots() {
         isSecureTextEntry = false
     }
     
